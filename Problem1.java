@@ -39,3 +39,70 @@
  * 
  * You may find some useful method in the Math class for this assignment.
  */
+import java.lang.IllegalAccessException;
+
+public class Problemone
+{
+    public static class Vector3D
+    {
+        private double x;
+        private double y;
+        private double z;
+        
+        public Vector3D(double x, double y, double z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+        
+        public String toString()
+        {
+            return "(" + x + "; " + y + "; " + z + ")";
+        }
+        
+        public double getMagnitude()
+        {
+            return Math.sqrt(Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2));
+        }
+        
+        public double dotProduct(Vector3D obj)
+        {
+            return x * obj.x + y * obj.y + z * obj.z;
+        }
+        
+        public double angleBetween(Vector3D obj) throws IllegalAccessException
+        {
+            if (getMagnitude() * obj.getMagnitude() == 0)
+            {
+                throw new IllegalAccessException("This angle cannot be computed, please enter the x, y, z value again");
+            }
+
+            return Math.acos((dotProduct(obj)) / (getMagnitude() * obj.getMagnitude()));
+        }
+        
+    }
+    
+    public static void main(String[] args)
+    {
+        Vector3D a1 = new Vector3D(1, 2, 3);
+        Vector3D a2 = new Vector3D(4, 5, 6);
+        Vector3D a3 = new Vector3D(0, 0, 0);
+        
+        System.out.println(a1.dotProduct(a2));
+        System.out.println(a2.dotProduct(a1));
+        
+        try
+        {
+            System.out.println(a1.angleBetween(a3));
+        } catch (IllegalAccessException e)
+        {
+           System.out.println("Caught in main function, computing result");
+        }
+        
+        System.out.println(a1.toString());
+    
+    }
+}
+
+ 
