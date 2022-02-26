@@ -25,3 +25,84 @@
  *     - Should return the size of the array and the numbers in it.
  *     - Format: "size: 5, [1,2,3,4,5]"
  */
+import java.util.Arrays;
+public class Problemthree {
+    public static class ArrayTool{
+        private int[] numbers;
+        public static int counter;
+        public static int numbertool()
+        {
+            return counter;
+        }
+
+        public ArrayTool()
+        {
+            numbers = new int[5];
+            counter++;
+        }
+
+        public ArrayTool(int numsize)
+        {
+            if (numsize <= 0)
+               numbers = new int[5];
+            else
+               numbers = new int [numsize];
+               counter++;
+        }
+
+        public int[] getarray()
+        {
+            return numbers;
+        }
+
+        public void setArray(int index, int value)
+        {
+            try
+            {
+                numbers[index] = value;
+
+            } catch (Exception e)
+            {
+                System.out.println("please check the array size and volume for vaild entry");
+                return;
+            }
+        }
+
+        public void reverse()
+        {
+            for (a = 0, b=numbers.length-1; a<b; a++, b--)
+            {
+                int temp = numbers[a];
+                numbers[a] = numbers[b];
+                numbers[b] = temp;
+            }
+        }
+        public void decrease(int val)
+        {
+            for (int a = 0; a < numbers.length; a++)
+            numbers[a] -= val;
+        }
+        public void decrease()
+        {
+            decrease(1);
+        }
+        public String toString()
+        {
+            return "Size: " + numbers.length + ", " + Arrays.toString(numbers);
+
+        }
+
+        public static void main(String[] args)
+        {
+            ArrayTool arrayTool = new ArrayTool();
+            for (int a = 0; a < 5; a++)
+            {
+                arrayTool.setArray(a, a+1);
+            }
+
+            System.out.println(arrayTool.toString());
+        }
+
+    }
+    
+}
