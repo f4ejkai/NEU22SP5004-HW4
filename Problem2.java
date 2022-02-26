@@ -17,3 +17,92 @@
  * method. So, you must submit one file EmployeeTest.java containing the above two classes.
  * The tests must be performed in the main() method.
  */
+public class Problem2 {
+    private static class Employee{
+        private String Fir_name;
+        private String Las_name;
+        private double Monthly_pay;
+
+        public Employee()
+        {
+         Fir_name = "";
+         Las_name = "";
+         Monthly_pay = 0.0;
+        }
+            public boolean setFir_name(String Fir_name)
+            {
+            if (Fir_name.equals(""))
+                {
+                this.Fir_name = "";
+                return false;
+                }
+                this.Fir_name = Fir_name;
+                return true;
+            }
+
+            public boolean setLas_name(String Las_name)
+            {
+                if (Las_name.equals(""))
+                {
+                    this.Las_name = "";
+                    return false;
+                }
+                
+                this.Las_name = Las_name;
+                return true;
+            }
+
+            public boolean setMonthly_pay(double Monthly_pay)
+            {
+                if (Monthly_pay <= 0)
+                {
+                    this.Monthly_pay = 0;
+                    return false;
+                }
+                this.Monthly_pay = Monthly_pay;
+                return true;
+            }
+            
+            public String getFir_name()
+            {
+                return Fir_name;
+            }
+
+            public String getLas_name()
+            { 
+                return Las_name;
+            }
+
+            public double getMonthly_pay()
+            {
+                return Monthly_pay;
+            }
+            public String toString()
+            {
+                return Fir_name + " " + Las_name + ": " + Monthly_pay;
+            }
+            public boolean equals(Employee obj)
+            {
+                return Fir_name.equals(obj.Fir_name) && Las_name.equals(obj.Las_name)&&Monthly_pay == obj.Monthly_pay;
+        
+            }
+
+        public static void main(String[] args)
+        {
+            Employee Number1 = new Employee();
+            Employee Number2 = new Employee();
+
+            Number1.setFir_name("Kevin");
+            Number1.setLas_name("Wang");
+            Number1.setMonthly_pay(9000.0);
+
+            Number2.setFir_name("Hward");
+            Number2.setLas_name("Mason");
+            Number2.setMonthly_pay(10000.0);
+
+            System.out.println(Number1.toString());
+            System.out.println(Number2.toString());
+            System.out.println(Number1.equals(Number2));
+        }
+    }       
+}
